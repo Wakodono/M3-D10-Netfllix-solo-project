@@ -597,30 +597,33 @@
     const headers = new Headers({
             "Content-Type": "application/json",
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFkMDkxOTJkNTI2MjAwMTViNmRjZjgiLCJpYXQiOjE2Mjk0NjIzNDcsImV4cCI6MTYzMDY3MTk0N30.7ejpti7cdo6LUoC3fdT_ZmJhyfjR6-mXL9hnVOboKlo",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFkMDkxOTJkNTI2MjAwMTViNmRjZjgiLCJpYXQiOjE2MzI0Nzg3OTcsImV4cCI6MTYzMzY4ODM5N30.evD1KyzoHTgpd_-9K0jNIWrZLufLLsVH3EQex6Gnpbw",
           });
 
-      const getMovies = async (url) => {
-        const response = await fetch(url, { headers });
+          const getMovies = async (url) => {
+            try {
+                const response = await fetch(url)
 
-        if (response.ok) {
-          const movies = await response.json();
+                if (!response.ok) { throw " ERROR IN THE FETCH" }
 
-          console.log(movies);
-          return movies;
+                const body = await response.json()
+                console.log(body)
+                return body
+
+            } catch (err) {
+                alert("WE HAVE AN ISSUE: " + err)
+            } finally {
+                console.log("FINALLY")
+            }
         }
-      };
-
       window.onload = async () => {
         try {
           const url = "https://striveschool-api.herokuapp.com/api/movies/";
           
 
-          const movies = await getMovies(url);
-
           // displayMovies(movies);
         } catch (err) {
-          console.log("This is the error: " + err);
+          console.log("ERROR MSG: " + err);
         }
       };
     </script>
