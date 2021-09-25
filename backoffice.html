@@ -166,13 +166,13 @@
         <form onsubmit="handleSubmit(event)">
           <div class="form-group">
             <label for="title">Title</label>
-            <input id="title" type="text" class="form-control" placeholder="Movie title" aria-describedby="title field"
+            <input id="name" type="text" class="form-control" placeholder="Movie title" aria-describedby="title field"
               required />
           </div>
           <div class="form-group">
-            <label for="synopsis">Synopsis</label>
-            <textarea id="synopsis" type="textarea" rows="3" class="form-control" placeholder="Insert synopsis"
-              aria-describedby="event synopsis field" required></textarea>
+            <label for="description">Synopsis</label>
+            <textarea id="description" type="textarea" rows="3" class="form-control" placeholder="Insert synopsis"
+              aria-describedby="event description field" required></textarea>
           </div>
           <div class="form-group">
             <label for="category">Category</label>
@@ -180,12 +180,12 @@
               aria-describedby="category field" required />
           </div>
           <div class="form-group">
-            <label for="poster">Poster</label>
-            <input id="poster" type="text" class="form-control" placeholder="Insert image source url"
-              aria-describedby="poster field" required />
+            <label for="imageUrl">Poster</label>
+            <input id="imageUrl" type="text" class="form-control" placeholder="Insert image source url"
+              aria-describedby="imageUrl field" required />
           </div>
           <div>
-            <button type="button" class="btn btn-success" onclick="handleSubmit()">Upload Movie</button>
+            <button type="button" class="btn btn-success" onclick="handleSubmit(event)">Upload Movie</button>
           </div>
         </form>
 
@@ -199,70 +199,6 @@
           integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
           crossorigin="anonymous"></script>
 
-        <script>
-
-          const movieId = new URLSearchParams(location.search).get("movieId")
-
-          const endpoint = movieId ? "https://striveschool-api.herokuapp.com/api/movies/" + movieId : "https://striveschool-api.herokuapp.com/api/movies/"
-
-          const method = movieId ? "PUT" : "POST"
-
-          const handleSubmit = async (event) => {
-            event.preventDefault()
-
-            // isLoading(true);
-
-
-            const newMovie = {
-              title: document.getElementById("title").value,
-              synopsis: document.getElementById("synopsis").value,
-              category: document.getElementById("category").value,
-              poster: document.getElementById("poster").value
-            }
-
-            try {
-
-              const response = await fetch(endpoint, {
-                method: movieId ? "PUT" : "POST",
-                body: JSON.stringify(newMovie),
-                // the body property is the payload of our call,
-                // so the content we want to carry!
-                // it must be a STRING
-                // so our newMovie object needs to be stringified
-                headers: {
-                  "Content-Type": "application/json",
-                }
-                // the headers in an HTTP call are all about meta-information
-                // we need to pass the "Content-Type" to make our APIs aware
-                // that our payload is not any string, but it's an object stringified
-              })
-
-              if (response.ok) {
-                const respMovie = await response.json()
-                if (movieId) {
-                  // Edit alert
-                  showAlert("success", "Movie with an id of " + respMovie._id + " EDITED")
-                } else {
-                  // Creation alert
-                  showAlert("info", "Movie created successfully with an id of " + respMovie._id)
-                }
-              }
-            } catch (err) {
-              // Error alert
-              showAlert("danger", err.message)
-            }
-            finally {
-              // switching off the loader in any case at this point
-              isLoading(false);
-            }
-          }
-
-          window.onload = () => {
-
-
-
-          }
-        </script>
 </body>
 
 </html>

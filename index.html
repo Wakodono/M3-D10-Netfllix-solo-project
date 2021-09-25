@@ -593,39 +593,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <script>
-    const headers = new Headers({
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFkMDkxOTJkNTI2MjAwMTViNmRjZjgiLCJpYXQiOjE2MzI0Nzg3OTcsImV4cCI6MTYzMzY4ODM5N30.evD1KyzoHTgpd_-9K0jNIWrZLufLLsVH3EQex6Gnpbw",
-          });
+    <script src="./index.js"></script>
 
-          const getMovies = async (url) => {
-            try {
-                const response = await fetch(url)
-
-                if (!response.ok) { throw " ERROR IN THE FETCH" }
-
-                const body = await response.json()
-                console.log(body)
-                return body
-
-            } catch (err) {
-                alert("WE HAVE AN ISSUE: " + err)
-            } finally {
-                console.log("FINALLY")
-            }
-        }
-      window.onload = async () => {
-        try {
-          const url = "https://striveschool-api.herokuapp.com/api/movies/";
-          
-
-          // displayMovies(movies);
-        } catch (err) {
-          console.log("ERROR MSG: " + err);
-        }
-      };
-    </script>
   </body>
 </html>
