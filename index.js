@@ -27,6 +27,87 @@ const getCategories = async () => {
   }
 };
 
+displayMovies = (movies) => {
+    const movieSection = document.querySelectorAll(".container-fluid .pl-lg-5 .mt-3")
+    const movieRow = document.querySelectorAll(".row .m-n1")
+
+    const singleMovie = `<div class="col px-1">
+    <img
+      src="/assets/netflix_logo.png"
+      class="netflix-logo"
+      height="40px"
+      alt="Netflix Logo"
+    />
+    <img src=${movies.name} alt=${movies.name} />
+  </div>`
+
+    if (movies.length > 0) {
+        movies.forEach(movie => {
+            
+        });
+    }
+}
+{/* <div class="container-fluid pl-lg-5 mt-3">
+      <!--Container 1 row 1 trending -->
+
+      <div class="row m-n1">
+        <h3>Trending Now</h3>
+        <div class="d-flex flex-nowrap">
+          <div class="col px-1">
+            <img
+              src="/assets/netflix_logo.png"
+              class="netflix-logo"
+              height="40px"
+              alt="Netflix Logo"
+            />
+            <img src="/assets/media/media0.webp" alt="Sherlock" />
+          </div>
+
+          <div class="col px-1">
+            <img src="/assets/media/media1.jpg" alt="American Factory" />
+          </div>
+
+          <div class="col px-1">
+            <img
+              src="/assets/netflix_logo.png"
+              class="netflix-logo"
+              height="40px"
+              alt="Netflix Logo"
+            />
+            <img src="/assets/media/media2.webp" alt="The Good Place" />
+          </div>
+
+          <div class="col px-1">
+            <img src="/assets/media/media4.jpg" alt="Cuba" />
+          </div>
+
+          <div class="col px-1">
+            <img
+              src="/assets/netflix_logo.png"
+              class="netflix-logo"
+              height="40px"
+              alt="Netflix Logo"
+            />
+            <img src="/assets/media/media3.webp" alt="Genius" />
+          </div>
+
+          <div class="col px-1">
+            <img src="/assets/media/media6.jpg" alt="Social Dilemma" />
+          </div>
+
+          <div class="col px-1">
+            <img
+              src="/assets/netflix_logo.png"
+              class="netflix-logo"
+              height="40px"
+              alt="Netflix Logo"
+            />
+            <img src="/assets/media/media5.webp" alt="The China Hustle" />
+          </div>
+        </div>
+      </div>
+    </div> */}
+
 window.onload = () => {
     getCategories()
 }
